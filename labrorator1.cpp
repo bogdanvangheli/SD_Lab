@@ -1,0 +1,106 @@
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+void Line(int lf, int lin, int mid, int rt, int operand = 2 )
+{
+    int i, j;
+    printf("\n%c", lf);
+
+    for (j=1; j<=operand; j++)
+    {
+        for(i=1; i<=3; i++) printf("%c", lin);
+        printf("%c", mid);
+    }
+
+    for(i=1; i<=10; i++) printf("%c", lin);
+    printf("%c", rt);
+
+}
+
+void OperatiiBinare(int key)
+{
+    unsigned a,b, rez;
+    cout <<"\n\t" << key << ". " ;
+    switch(key){
+        case 2: cout << "Conjuctia"<< endl; break;
+        case 3: cout << "Disjuctia"<< endl; break;
+        case 4: cout << "Diferenta"<< endl; break;
+        case 5: cout << "Implicatia"<< endl; break;
+        case 6: cout << "Echivalenta"<< endl; break;
+        case 7: cout << "Conectorul Sheffer"<< endl; break;
+        case 8: cout << "Conectorul Pirce"<< endl; break;
+    }
+
+    Line(201,205,209,187);
+    switch (key){
+
+        case 2: printf("\n%c A %c B %c A and B %2c", 186, 179, 179, 186);
+        break;
+        case 3: printf("\n%c A %c B %c A or B %3c", 186, 179, 179, 186);
+        break;
+        case 4: printf("\n%c A %c B %c A - B %4c", 186, 179, 179, 186);
+        break;
+        case 5: printf("\n%c A %c B %c A -> B %3c", 186, 179, 179, 186);
+        break;
+        case 6: printf("\n%c A %c B %c A <-> B %2c", 186, 179, 179, 186);
+        break;
+        case 7: printf("\n%c A %c B %c A nand B %c", 186, 179, 179, 186);
+        break;
+        case 8: printf("\n%c A %c B %c A nor B %2c", 186, 179, 179, 186);
+        break;
+    }
+
+    Line(199, 196, 197, 182);
+    for(a=0; a<=1; a++)
+    {
+        for(b=0; b<=1; b++)
+        {
+            switch(key)
+            {
+                case 2: rez = a&b; break;
+                case 3: rez = a|b; break;
+                case 4: rez = a&!b; break;
+                case 5: rez = !a|b; break;
+                case 6: rez = (a==b); break;
+                case 7: rez = !(a&b); break;
+                case 8: rez = !(a|b); break;
+            }
+            printf("\n%c %d %c %d %c %5d %4c ", 186, a, 179, b, 179, rez ,186);
+        }
+    }
+    Line(200,205,207,188);
+}
+
+int main()
+{
+    system("color F0");
+
+    unsigned a,b;
+
+    cout << "Proiect nr.1, elaborat de Vangheli Bogdan" << endl;
+
+    cout << "Tema: Operatii cu multimi.Conectori logici." << endl;
+
+    cout << "        1. Negatia" << endl;
+
+    Line(201,205,209,187, 1);
+    printf("\n%c A %c not A %4c", 186, 179, 186);
+    Line(199,196,197,182, 1);
+    for(a=0; a<=1; a++)
+    {
+        printf("\n%c %d %c %5d %4c", 186, a, 179, !a, 186);
+    }
+    Line(200,205,207,188, 1);
+
+    OperatiiBinare(2);
+    OperatiiBinare(3);
+    OperatiiBinare(4);
+    OperatiiBinare(5);
+    OperatiiBinare(6);
+    OperatiiBinare(7);
+    OperatiiBinare(8);
+    return 0;
+}
+
