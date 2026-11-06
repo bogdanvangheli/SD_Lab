@@ -80,7 +80,7 @@ int main()
 
     unsigned a,b;
 
-    cout << "Proiect nr.1, elaborat de Basiuc Chirill" << endl;
+    cout << "Proiect nr.1, elaborat de Vangheli Bogdan" << endl;
 
     cout << "Tema: Operatii cu multimi.Conectori logici." << endl;
 
