@@ -22,11 +22,8 @@ void Line(int lf, int lin, int mid, int rt, int operand = 2 )
 
 void OperatiiBinare(int key)
 {
-    unsigned a, b, c, d, e, rez;
-    int n = 2, maxc = 0, maxd = 0, maxe = 0;
-
-    if (key == 10) { n = 4; maxc = 1; maxd = 1; }
-    if (key == 11) { n = 5; maxc = 1; maxd = 1; maxe = 1; }
+    unsigned a, b, rez;
+    int n = 2;
 
     cout <<"\n\t" << key << ". " ;
     switch(key){
@@ -38,19 +35,11 @@ void OperatiiBinare(int key)
         case 7: cout << "Conectourl Pierce"<< endl; break;
         case 8: cout << "Implicatie"<< endl; break;
         case 9: cout << "Echvivalentia"<< endl; break;
-        case 10:
-            cout << "Problema simpla (4 variabile)" << endl;
-            cout << "\n\tF = (A or B) and (not C or D)" << endl;
-            break;
-        case 11:
-            cout << "Problema Generala (5 variabile)" << endl;
-            cout << "\n\tF = ((A and B) or (C xor D)) and not E" << endl;
-            break;
     }
 
     Line(201,205,209,187, n);
-    switch (key){
 
+    switch (key){
         case 2: printf("\n%c A %c B %c A and B %2c", 186, 179, 179, 186); break;
         case 3: printf("\n%c A %c B %c A or B %3c", 186, 179, 179, 186);break;
         case 4: printf("\n%c A %c B %c A - B %4c", 186, 179, 179, 186);break;
@@ -59,8 +48,6 @@ void OperatiiBinare(int key)
         case 7: printf("\n%c A %c B %c A nor B %2c", 186, 179, 179, 186);break;
         case 8: printf("\n%c A %c B %c A => B %3c", 186, 179, 179, 186);break;
         case 9: printf("\n%c A %c B %c A == B %3c", 186, 179, 179, 186);break;
-        case 10: printf("\n%c A %c B %c C %c D %c F %8c", 186, 179, 179, 179, 179, 186); break;
-        case 11: printf("\n%c A %c B %c C %c D %c E %c F %8c", 186, 179, 179, 179, 179, 179, 186); break;
     }
 
     Line(199, 196, 197, 182, n);
@@ -69,41 +56,80 @@ void OperatiiBinare(int key)
     {
         for(b=0; b<=1; b++)
         {
-            for(c=0; c<=maxc; c++)
+            switch(key)
             {
-                for(d=0; d<=maxd; d++)
-                {
-                    for(e=0; e<=maxe; e++)
-                    {
-                        switch(key)
-                        {
-                            case 2: rez = a&b; break;
-                            case 3: rez = a|b; break;
-                            case 4: rez = a & (!b); break;
-                            case 5: rez = a ^ b; break;
-                            case 6: rez = !(a&b); break;
-                            case 7: rez = !(a|b); break;
-                            case 8: rez = !a | b; break;
-                            case 9: rez = a == b; break;
-
-                            case 10: rez = (a | b) & (!c | d); break;
-
-                            case 11: rez = ((a & b) | (c ^ d)) & !e; break;
-                        }
-
-                        if (key < 10)
-                            printf("\n%c %d %c %d %c %5d %4c ", 186, a, 179, b, 179, rez, 186);
-                        if (key == 10)
-                            printf("\n%c %d %c %d %c %d %c %d %c %5d %4c ", 186, a, 179, b, 179, c, 179, d, 179, rez, 186);
-                        if (key == 11)
-                            printf("\n%c %d %c %d %c %d %c %d %c %d %c %5d %4c ", 186, a, 179, b, 179, c, 179, d, 179, e, 179, rez, 186);
-                    }
-                }
+                case 2: rez = a&b; break;
+                case 3: rez = a|b; break;
+                case 4: rez = a & (!b); break;
+                case 5: rez = a ^ b; break;
+                case 6: rez = !(a&b); break;
+                case 7: rez = !(a|b); break;
+                case 8: rez = !a | b; break;
+                case 9: rez = a == b; break;
             }
+
+            printf("\n%c %d %c %d %c %5d %4c ", 186, a, 179, b, 179, rez, 186);
         }
     }
 
     Line(200,205,207,188, n);
+}
+
+void ProblemaSimpla()
+{
+    unsigned a, b, c, d, rez;
+    int n = 4;
+
+    cout << "\n\t10. Problema simpla (4 variabile)" << endl;
+    cout << "\n\tF = (A or B) and (not C or D)" << endl;
+
+    Line(201,205,209,187, n);
+    printf("\n%c A %c B %c C %c D %c F %8c", 186, 179, 179, 179, 179, 186);
+    Line(199,196,197,182, n);
+
+    for(a=0; a<=1; a++)
+        for(b=0; b<=1; b++)
+            for(c=0; c<=1; c++)
+                for(d=0; d<=1; d++)
+                {
+                    rez = (a | b) & (!c | d);
+                    printf("\n%c %d %c %d %c %d %c %d %c %5d %4c ", 186, a, 179, b, 179, c, 179, d, 179, rez, 186);
+                }
+
+    Line(200,205,207,188, n);
+}
+
+void ProblemaGenerala()
+{
+    unsigned x, y, z, v, rez;
+    int n = 4;
+
+    cout << "\n\t11. Problema Generala (4 variabile)" << endl;
+    cout << "\n\tX: Dreptele a si b sunt paralele" << endl;
+    cout << "\tY: Dreptele a si b sunt concurente" << endl;
+    cout << "\tZ: Dreptele a si b sunt strambrate" << endl;
+    cout << "\tV: Dreptele a si b se afla in acelasi plan" << endl;
+    cout << "\n\tPremise: (X or Y or Z), (not Y and V), (Z => not V)" << endl;
+    cout << "\tF = (X or Y or Z) and (not Y and V) and (not Z or not V)" << endl;
+
+    Line(201,205,209,187, n);
+    printf("\n%c X %c Y %c Z %c V %c F %8c", 186, 179, 179, 179, 179, 186);
+    Line(199,196,197,182, n);
+
+    for(x=0; x<=1; x++)
+        for(y=0; y<=1; y++)
+            for(z=0; z<=1; z++)
+                for(v=0; v<=1; v++)
+                {
+                    rez = (x | y | z) & (!y & v) & (!z | !v);
+                    printf("\n%c %d %c %d %c %d %c %d %c %5d %4c ", 186, x, 179, y, 179, z, 179, v, 179, rez, 186);
+                }
+
+    Line(200,205,207,188, n);
+
+    cout << "\n\n\tF = 1 doar pentru X=1, Y=0, Z=0, V=1" << endl;
+    cout << "\tConcluzie: X and V" << endl;
+    cout << "\tDreptele sunt in acelasi plan si sunt paralele." << endl;
 }
 
 int main()
@@ -135,8 +161,8 @@ int main()
     OperatiiBinare(7);
     OperatiiBinare(8);
     OperatiiBinare(9);
-    OperatiiBinare(10);
-    OperatiiBinare(11);
+    ProblemaSimpla();
+    ProblemaGenerala();
 
     return 0;
 }
